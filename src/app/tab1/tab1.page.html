@@ -1,11 +1,69 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-title>
-      Tab One
+      Homepage
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-   <p> อีบี๋ อีบี๋ อีบี๋ อีบี๋ อีบี๋ อีบี๋</p>
+<ion-content >
+  <div class="row">
+    <div class="col">
+        <div class="text-center"> <h5>สถานะ : {{status ? "เปิด" : "ปิด"}}</h5></div>
+       </div>
+    <div class="col" > 
+       <div class="text-right"> <ion-toggle color="secondary" [(ngModel)]="status"></ion-toggle></div>
+    </div>
+  </div>
+
+  <div class="text-center">
+  <ngx-gauge [type]="'full'" 
+  [value]="temp" 
+  [label]="'อุณภูมิ'"  
+  [append]="'°C '">
+</ngx-gauge>
+<ngx-gauge [type]="'full'" 
+[value]="temp" 
+[label]="'อุณภูมิ'"  
+[append]="'°C '">
+</ngx-gauge>
+</div>
+
+<div class="row">
+  <div class="col">
+    <ion-card>
+      <ion-card-header>
+      <h4>อุณภูมิ</h4>
+      
+      </ion-card-header>
+    
+      <ion-card-content>
+       <h1 >{{temp}}</h1>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="col">
+    <ion-card>
+      <ion-card-header>
+      <h4>ความชื้น</h4>
+      
+      </ion-card-header>
+    
+      <ion-card-content>
+       <h1>{{hum}}</h1>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</div>
+
+
+  <ion-item line="full">
+    <ion-label>ตั้งเวลา 1</ion-label>
+    <ion-datetime displayFormat="HH:mm" (ionChange)="getTime(timeSelect.value)" #timeSelect>
+    </ion-datetime>
+  </ion-item>
+
+
+
+
 </ion-content>
